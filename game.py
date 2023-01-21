@@ -8,15 +8,16 @@ basic_template = '''
 # Declaring  important variables before
 X = 'X '
 O = 'O '
-Winner = False
 
 def print_board(board):
     print(f'''
- {board['t1']}| {board['t2']}| {board['t3']}
----|---|---
- {board['m1']}| {board['m2']}| {board['m3']}
----|---|---
- {board['b1']}| {board['b2']}| {board['b3']} 
+    1   2   3 
+
+ t  {board['t1']}| {board['t2']}| {board['t3']}
+   ---|---|---
+ m  {board['m1']}| {board['m2']}| {board['m3']}
+   ---|---|---
+ b  {board['b1']}| {board['b2']}| {board['b3']} 
 ''')
 
 def start_game():
@@ -68,12 +69,9 @@ def check_winner(board):
         return False
 
 def winner(current_player):
-    if current_player == 'Player1':
-        print(f'Winner is {current_player}')
-        play_again()
-    else:
-        print(f'Winner is {current_player}')
-        play_again()
+    # prints out the which player is the winner
+    print(f'Winner is {current_player}')
+    play_again()
 
 def check_draw(total_inputs):
     if total_inputs == 9 and check_winner() == False:
@@ -95,7 +93,7 @@ def main_board():
     print('Lets start the game\n')
     print('Player1 : O        Player2 : X')
     print_board(board)
-    global Winner 
+    Winner = False 
     while total_inputs != 9:
         try:
             player_input = input(f'{current_player}>>>> ')
